@@ -18,6 +18,9 @@ package com.example.android.architecture.blueprints.todoapp
 
 import android.app.Application
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
+import com.posthog.android.PostHogAndroid
+import com.posthog.android.PostHogAndroidConfig
+import com.posthog.android.replay.PostHogSessionReplayConfig
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -35,6 +38,19 @@ class TodoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+//        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+
+        val config = PostHogAndroidConfig(
+            apiKey = "phc_pQ70jJhZKHRvDIL5ruOErnPy6xiAiWCqlL4ayELj4X8",
+            host = "https://us.posthog.com",
+        ).apply {
+            // sessionReplay is disabled by default
+            sessionReplay = true
+            // sessionReplayConfig is optional, they are enabled by default
+            sessionReplayConfig.maskAllTextInputs = false
+            sessionReplayConfig.maskAllImages = false
+            sessionReplayConfig.captureLogcat = true
+        }
+        PostHogAndroid.setup(this, config)
     }
 }

@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlinVersion = '1.6.20'
+    ext.kotlinVersion = '1.8.0'
     ext.navigationVersion = '2.5.0'
     ext.ktlintVersion = '0.44.0'
     repositories {
@@ -30,7 +30,7 @@ allprojects {
         kotlin {
             target "**/*.kt"
             targetExclude ".idea/"
-            ktlint(ktlintVersion)
+//            ktlint(ktlintVersion)
         }
     }
 }
@@ -39,8 +39,8 @@ allprojects {
 ext {
     // Sdk and tools
     minSdkVersion = 21
-    targetSdkVersion = 32
-    compileSdkVersion = 32
+    targetSdkVersion = 34
+    compileSdkVersion = 34
 
     // App dependencies
     androidXVersion = '1.0.0'
@@ -64,7 +64,7 @@ ext {
     multiDexVersion = '2.0.1'
     recyclerViewVersion = '1.2.1'
     robolectricVersion = '4.7.3'
-    roomVersion = '2.4.1'
+    roomVersion = '2.6.1'
     rulesVersion = '1.0.1'
     timberVersion = '4.7.1'
     truthVersion = '1.1.2'

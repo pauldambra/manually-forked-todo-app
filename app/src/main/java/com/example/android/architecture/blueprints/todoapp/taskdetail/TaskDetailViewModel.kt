@@ -91,7 +91,8 @@ class TaskDetailViewModel(
             return
         }
         // Trigger the load
-        _taskId.value = taskId
+        taskId.let {
+        _taskId.value = it}
     }
 
     private fun computeResult(taskResult: Result<Task>): Task? {
